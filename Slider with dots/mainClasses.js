@@ -6,10 +6,12 @@ class Slider {
         this.dots = document.querySelector(dotsSelector);
     }
 
-    changeItem({ active, newElement }) {
+    changeItem({ active, newElement, activeD, newElementD }) {
         if (newElement) {
             active.classList.remove('active');
             newElement.classList.add('active');
+            activeD.classList.remove('active');
+            newElementD.classList.add('active');
         }
     }
 
@@ -36,12 +38,9 @@ class Slider {
             this.changeItem({
                 newElement: this.activeLi.nextElementSibling,
                 active: this.activeLi,
+                newElementD: this.activeDot.nextElementSibling,
+                activeD: this.activeDot,
             });
-            this.changeItem({
-                newElement: this.activeDot.nextElementSibling,
-                active: this.activeDot,
-            });
-
             this.btnNotActive();
         });
     }
@@ -53,10 +52,8 @@ class Slider {
             this.changeItem({
                 newElement: this.activeLi.previousElementSibling,
                 active: this.activeLi,
-            });
-            this.changeItem({
-                newElement: this.activeDot.previousElementSibling,
-                active: this.activeDot,
+                newElementD: this.activeDot.previousElementSibling,
+                activeD: this.activeDot,
             });
             this.btnNotActive();
         });
